@@ -1,3 +1,4 @@
+
 var waitingTable = [
   {
    	name: "Customer Gal",
