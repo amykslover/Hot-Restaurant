@@ -1,7 +1,10 @@
-var reservations = [
+var reservedTable = [
   {
-    name: "yoda",
-    phone: "Yoda",
-    email: "Jedi Master"
-  }
-];
+   	name: "Customer Person",
+    phone: "222-2222",
+    email: "test@test.com"
+    
+  }];
+
+  module.exports = reservedTable;
+
