@@ -22,7 +22,6 @@ module.exports = function(app) {
         res.json(newReservation);
     });
 
-
     // Search for Specific Character (or all characters) - provides JSON
     app.get("/api/:reservation?", function(req, res) {
         var chosen = req.params.reservation;
