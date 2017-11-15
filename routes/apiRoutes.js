@@ -21,7 +21,8 @@ module.exports = function(app) {
         } else {
             waitingTable.push(newReservation);
         }
-
+    });
+    
    app.get("/api/:reservation?", function(req, res) {
         var chosen = req.params.reservation;
 
