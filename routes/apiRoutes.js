@@ -12,14 +12,19 @@ module.exports = function(app) {
         // req.body hosts is equal to the JSON post sent from the user
         // This works because of our body-parser middleware
         var newReservation = req.body;
-        newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
+        console.log('newReservation', newReservation)
 
-        console.log(newReservation);
-        //if  5 tables push to other array
-        reservedTable.push(newReservation);
-        console.log(reservedTable)
-        res.json(reservedTable);
+console.log('L19', reservedTable.length)
+        if (reservedTable.length <= 5) {
+            reservedTable.push(newReservation);
+            console.log('reservedTable', reservedTable);
+
+        } else {
+            waitingTable.push(newReservation);
+            
+        }
+
     });
 
-   
+
 }
