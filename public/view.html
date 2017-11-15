@@ -53,17 +53,28 @@
 
 <script type="text/javascript">
 	
-$.get("/api", function(data) {
+$.get("/api/waiting", function(data) {
 	console.log("data: ", data);
       for (var i = 0; i < data.length; i++) {
         var wellSection = $("<div>");
         wellSection.addClass("well");
-        wellSection.attr("id", "reservation-well-" + i);
-        $("#waitlistSection").append(wellSection);
+        wellSection.append("<h2>" + data[i].name + "</h2>");
+        wellSection.append("<h3>Phone: " + data[i].phone + "</h4>");
+        wellSection.append("<h3>Email: " + data[i].email + "</h4>");
+        $("#tableSection").append(wellSection);
+      }
+    });
 
-       $("#character-well-" + i).append("<h2>" + data[i].name + "</h2>");
-        $("#character-well-" + i).append("<h3>Phone: " + data[i].phone + "</h4>");
-        $("#character-well-" + i).append("<h3>Email: " + data[i].email + "</h4>");
+$.get("/api/reserved", function(data) {
+    console.log("data: ", data);
+      for (var i = 0; i < data.length; i++) {
+        var wellSection = $("<div>");
+        wellSection.addClass("well");
+        wellSection.append("<h2>" + data[i].name + "</h2>");
+        wellSection.append("<h3>Phone: " + data[i].phone + "</h4>");
+        wellSection.append("<h3>Email: " + data[i].email + "</h4>");
+     
+        $("#waitlistSection").append(wellSection);
       }
     });
 
