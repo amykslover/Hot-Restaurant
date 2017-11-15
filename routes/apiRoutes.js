@@ -6,10 +6,9 @@ var reservedTable = require("../data/reserved");
 
 module.exports = function(app) {
 
-    var reservations = [];
-
     // Create New Reservatoins - takes in JSON input
     app.post("/api/new", function(req, res) {
+
         // req.body hosts is equal to the JSON post sent from the user
         // This works because of our body-parser middleware
         var newReservation = req.body;
@@ -17,26 +16,10 @@ module.exports = function(app) {
 
         console.log(newReservation);
         //if  5 tables push to other array
-        reservations.push(newReservation);
-        console.log(reservations)
-        res.json(newReservation);
+        reservedTable.push(newReservation);
+        console.log(reservedTable)
+        res.json(reservedTable);
     });
 
-    // Search for Specific Character (or all characters) - provides JSON
-    app.get("/api/:reservation?", function(req, res) {
-        var chosen = req.params.reservation;
-
-        if (chosen) {
-            console.log(chosen);
-
-            for (var i = 0; i < reservedTable.length; i++) {
-                if (chosen === reservedTable[i].routeName) {
-                    return res.json(reservedTable[i]);
-                }
-            }
-
-            return res.json(false);
-        }
-        return res.json(reservedTable);
-    });
+   
 }
