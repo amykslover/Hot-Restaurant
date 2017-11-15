@@ -46,7 +46,7 @@
                   <input type="text" class="form-control" id="email">
                 </div>
 
-                <button type="submit" class="btn btn-primary submit">Submit</button>
+                <button id="add-btn" type="submit" class="btn btn-primary submit">Submit</button>
               </form>
 
           </div>
@@ -67,7 +67,6 @@
         email: $("#email").val().trim()
        
       };
-
       // Question: What does this code do??
       $.post("/api/new", newReservation)
       .done(function(data) {
