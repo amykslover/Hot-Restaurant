@@ -10,6 +10,8 @@ module.exports = function(app) {
 
     // Create New Reservatoins - takes in JSON input
     app.post("/api/new", function(req, res) {
+
+        console.log("TEST");
         // req.body hosts is equal to the JSON post sent from the user
         // This works because of our body-parser middleware
         var newReservation = req.body;
@@ -17,7 +19,7 @@ module.exports = function(app) {
 
         console.log(newReservation);
         //if  5 tables push to other array
-        reservations.push(newReservation);
+        reservedTable.push(newReservation);
         console.log(reservations)
         res.json(newReservation);
     });
@@ -26,17 +28,9 @@ module.exports = function(app) {
     app.get("/api/:reservation?", function(req, res) {
         var chosen = req.params.reservation;
 
-        if (chosen) {
-            console.log(chosen);
-
-            for (var i = 0; i < reservedTable.length; i++) {
-                if (chosen === reservedTable[i].routeName) {
-                    return res.json(reservedTable[i]);
-                }
-            }
-
-            return res.json(false);
+        if (chosen === "reserved") {
+            return res.json(reservedTable);
         }
-        return res.json(reservedTable);
+        return res.json(waitingTable);
     });
 }
