@@ -67,6 +67,15 @@
         email: $("#email").val().trim()
        
       };
+      $.get("/api/reserved", function(data) {
+        if (data.length <= 5) {
+            alert("You got a table!");
+        }
+        else {
+            alert("You've been added to the waiting list");
+        }
+     
+      });
       // Question: What does this code do??
       $.post("/api/new", newReservation)
       .done(function(data) {
